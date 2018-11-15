@@ -64,13 +64,21 @@ void pasoRK (double &t, double &x, double &y, double &vx, double &vy)
 	paso4_3=dt*dvxdt(t+1.0*dt, x+1.0*paso3_1, y+1.0*paso3_2, vx+1.0*paso3_3, vy+1.0*paso3_4);
 	paso4_4=dt*dvydt(t+1.0*dt, x+1.0*paso3_1, y+1.0*paso3_2, vx+1.0*paso3_3, vy+1.0*paso3_4);
 
+	t+=dt;
+	x+=(paso1_1+2*(paso2_1+paso3_1)+paso4_1)*1/6.0;
+	y+=(paso1_2+2*(paso2_2+paso3_2)+paso4_2)*1/6.0;
+	vx+=(paso1_3+2*(paso2_3+paso3_3)+paso4_3)*1/6.0;
+	vy+=(paso1_4+2*(paso2_4+paso3_4)+paso4_4)*1/6.0;
+
+
 }
+
 
 
 int main ()
 {
 
-	cout<<dvxdt(0.0,0.0,0.0,10.0,9.0)<<endl;
+	
 
 
 
