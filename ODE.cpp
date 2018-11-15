@@ -10,6 +10,7 @@ const double c = 0.2;
 const double m = 0.2;
 const double g = 10.0;
 const double dt = 0.001;
+const double v = 300.0;
 
 
 /*Definir las funciones para evaluar el metodo de Runge Kutta de cuarto orden*/
@@ -74,11 +75,20 @@ void pasoRK (double &t, double &x, double &y, double &vx, double &vy)
 }
 
 
+double GradosToRadianes (double angulo)
+{
+	return 3.14159*angulo/180.0;
+}
+
 
 int main ()
 {
 
-	
+	double x=0.0;
+	double y=0.0;
+	double vx=v*cos(GradosToRadianes(45.0));
+	double vY=v*sin(GradosToRadianes(45.0));	
+
 
 
 
