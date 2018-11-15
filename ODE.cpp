@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -83,12 +84,25 @@ double GradosToRadianes (double angulo)
 
 int main ()
 {
-
+	ofstream data;
+	data.open("datos1.txt");
 	double x=0.0;
 	double y=0.0;
 	double vx=v*cos(GradosToRadianes(45.0));
-	double vY=v*sin(GradosToRadianes(45.0));	
+	double vy=v*sin(GradosToRadianes(45.0));	
 
+	for (double t=0; t<10; t+=dt)
+	{
+		pasoRK(t,x,y,vx,vy);
+		data << t <<" "<<x<<" "<<y<<" "<<vx<<" "<<vy<<endl;
+		if (y<=0.0 && t>0.0)
+		{
+			cout << x <<" m"<<endl;
+			break;
+		}
+	}
+
+	data.close();
 
 
 
