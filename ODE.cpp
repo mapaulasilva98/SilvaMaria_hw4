@@ -81,6 +81,34 @@ double GradosToRadianes (double angulo)
 	return 3.14159*angulo/180.0;
 }
 
+int ordenar (double *vector, int tamanio)
+{
+	int i , j, temporal2;
+	double temporal;
+
+	double indicex[tamanio];
+
+	for (i=1;i<tamanio; i++)
+	{
+		indicex[i]=i;
+	}
+
+	for (i=1;i<tamanio;i++)
+	{
+		for (j=0; j<tamanio-i;j++)
+		{
+			if(vector[j]>vector[j+1])
+			{
+				temporal =vector[j], temporal2=indicex[j];
+				vector[j]=vector[j+1], indicex[j]=indicex[j+1];
+				vector[j+1]=temporal, indicex[j+1]=temporal2;
+			}
+		}
+	}
+
+	return indicex[tamanio-1];
+}
+
 
 int main ()
 {
@@ -105,6 +133,43 @@ int main ()
 	data.close();
 
 
+
+
+
+
+
+/*segunda parte */
+
+	ofstream data2;
+	data2.open ("datos2.txt");
+
+	double distancias[7];
+	double angulos[7]={10.0,20.0,30.0,40.0,50.0,60.0,70.0};
+
+	for (int i=0; i<7; i++)
+	{
+		x=0.0, y=0.0, vx=v*cos(GradosToRadianes(angulos[i])), vy=v*sin(GradosToRadianes(angulos[i]));
+
+		for (double t=0; t<10; t+=dt)
+		{
+			pasoRK(t,x,y,vx,vy);
+
+			data2 << t <<" "<<x<<" "<<y<<" "<<vx<<" "<<vy<<endl;
+			
+			if (y<=0.0 && t>0.0)
+			{
+			/*cout <<"alcance maximo para"<<angulos[i]<< " " << x <<" m"<<endl;*/
+			distancias[i]=x;
+
+			break;
+			}
+		} 
+
+	}
+
+	int indice = ordenar(distancias,7);
+
+	cout << "la mayor dsitancia es para el angulo "<< angulos[indice]<< endl;
 
 	return 0;
 }
