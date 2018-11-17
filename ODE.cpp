@@ -39,6 +39,7 @@ double dvydt (double t,double x, double y, double vx, double vy)
 
 
 /*cada paso de RK llamara tiempo x, y velocidad en x y en y*/
+/*& si llamo sta funcion desde el main y que si cambie afuera el main sepa*/
 
 void pasoRK (double &t, double &x, double &y, double &vx, double &vy)
 {
@@ -119,6 +120,9 @@ int main ()
 	double vx=v*cos(GradosToRadianes(45.0));
 	double vy=v*sin(GradosToRadianes(45.0));	
 
+
+	data << 0 <<" "<<x<<" "<<y<<" "<<vx<<" "<<vy<<endl;
+
 	for (double t=0; t<10; t+=dt)
 	{
 		pasoRK(t,x,y,vx,vy);
@@ -149,6 +153,8 @@ int main ()
 	for (int i=0; i<7; i++)
 	{
 		x=0.0, y=0.0, vx=v*cos(GradosToRadianes(angulos[i])), vy=v*sin(GradosToRadianes(angulos[i]));
+
+		data2 << 0 <<" "<<x<<" "<<y<<" "<<vx<<" "<<vy<<endl;
 
 		for (double t=0; t<10; t+=dt)
 		{
