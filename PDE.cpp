@@ -275,7 +275,7 @@ condicioninterna(t0);
 escribirarchivo(t0,"datosmatrizinicial2.txt");
 
 
-// para evolucion de frontera libre 
+// para evolucion de frontera libre 2
 
 for (int i=0; i<200000; i++)
 {
@@ -287,7 +287,7 @@ for (int i=0; i<200000; i++)
 	T+=dt;
 	
 
-// para condiciones intermedios caso 1 
+// para condiciones intermedios caso 2 
 	if( i==1000)
 	{
 		escribirarchivo(t,"datosinter2_1.txt");
@@ -308,7 +308,7 @@ for (int i=0; i<200000; i++)
 
 datospromedio2.close();
 
-// para equilibrio caso 1 
+// para equilibrio caso 2 
 escribirarchivo(t,"datosequilibrio2.txt");
 
 // aqui termina caso 2 
@@ -321,7 +321,7 @@ t0 = crearmatriz(N);
 t=crearmatriz(N);
 ofstream datospromedio3;
 
-// para el promedio de las t 
+// para el promedio de las t del caso 3
 datospromedio3.open("datospromedio3.txt");
 
 condicioninterna(t0);
@@ -342,7 +342,7 @@ for (int i=0; i<200000; i++)
 	T+=dt;
 	
 
-// para condiciones intermedios caso 1 
+// para condiciones intermedios caso 3 
 	if( i==1000)
 	{
 		escribirarchivo(t,"datosinter3_1.txt");
@@ -363,7 +363,7 @@ for (int i=0; i<200000; i++)
 
 datospromedio3.close();
 
-// para equilibrio caso 1 
+// para equilibrio caso 3
 escribirarchivo(t,"datosequilibrio3.txt");
 
 // aqui termina caso 3
